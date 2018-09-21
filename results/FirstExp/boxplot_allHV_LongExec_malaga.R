@@ -1,0 +1,7 @@
+postscript("images/FirstExp/boxplot_allHV_LongExec_malaga.eps", horizontal=FALSE, height=8, width=16, pointsize=12)
+data1<-scan("results/FirstExp/MonoGA_LongExec/Centella_MonoGA_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_864000_864000.allHV")
+data2<-scan("results/FirstExp/NSGA2_Multi_DCN_LongExec/Centella_NSGA2_Multi_DCN_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_864000_864000.allHV")
+dataM<-matrix(c(data1,data2), 2)
+library("Rlab")
+bplot(dataM, space = 0.6, labels = c("MonoGA", "NSGA2_DCN"), ylab = "Objective value", main = "malaga - 10 days")
+dev.off()

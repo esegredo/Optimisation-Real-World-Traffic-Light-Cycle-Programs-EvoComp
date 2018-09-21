@@ -1,0 +1,16 @@
+0.8112945 1.225821 0.8116755 1.229615 0.01507811 0.05725308 5.948016e-29 0
+Mejor: Centella_MonoGA_Sumo_Preliminary_Berlin_Mutate_Uniform_Crossover_Uniform_100_86400_86400.allHV
+0.8112945 1.472255 0.8116755 1.465345 0.01507811 0.1452141 2.285957e-21 0
+Mejor: Centella_MonoGA_Sumo_Preliminary_Berlin_Mutate_Uniform_Crossover_Uniform_100_86400_86400.allHV
+0.8112945 0.8100731 0.8116755 0.8110975 0.01507811 0.02114964 0.7977499 0.5333333
+No existe diferencia estadistica
+0.8112945 1.256199 0.8116755 1.264515 0.01507811 0.08878493 5.742565e-23 0
+Mejor: Centella_MonoGA_Sumo_Preliminary_Berlin_Mutate_Uniform_Crossover_Uniform_100_86400_86400.allHV
+0.8112945 1.111867 0.8116755 1.0965 0.01507811 0.06880518 1.383764e-21 0
+Mejor: Centella_MonoGA_Sumo_Preliminary_Berlin_Mutate_Uniform_Crossover_Uniform_100_86400_86400.allHV
+0.8112945 1.036162 0.8116755 1.036635 0.01507811 0.06989398 2.871949e-11 0
+Mejor: Centella_MonoGA_Sumo_Preliminary_Berlin_Mutate_Uniform_Crossover_Uniform_100_86400_86400.allHV
+0.8112945 0.8112945 0.8116755 0.8116755 0.01507811 0.01507811  1  0.5
+No existe diferencia estadistica
+0.8112945 1.001721 0.8116755 0.996029 0.01507811 0.05453234 4.442207e-19 0
+Mejor: Centella_MonoGA_Sumo_Preliminary_Berlin_Mutate_Uniform_Crossover_Uniform_100_86400_86400.allHV
