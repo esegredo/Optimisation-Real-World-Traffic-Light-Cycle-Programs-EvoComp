@@ -10,7 +10,7 @@ set key top right
 
 set xlabel "Number of evaluations" font "Helvetica,22"
 set ylabel "Mean objective function value" font "Helvetica,22"
-set title  "City: malaga - 1000 evals. - 30 exec." font "Helvetica-Bold,22"
+set title  "City: Malaga - 1000 evals. - 30 exec." font "Helvetica-Bold,22"
 set term postscript eps enhanced color solid "Helvetica,20"
 
 set xtics font "Helvetica,20"
@@ -19,4 +19,4 @@ set ytics font "Helvetica,20"
 
 set output "images/FirstExp/meanObjEvo_FirstExp_malaga.eps"
 
-plot "results/FirstExp/MonoGA/Centella_MonoGA_Sumo_malaga_FirstExp_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1000.avgHV.evolution" with linespoints title "MonoGA", "results/FirstExp/NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_malaga_FirstExp_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1000.avgHV.evolution" with linespoints title "NSGA2-Multi-DCN", "results/FirstExp/NSGA2_Multi_DBI/Centella_NSGA2_Multi_DBI_Sumo_malaga_FirstExp_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1000.avgHV.evolution" with linespoints title "NSGA2-Multi-DBI", "results/FirstExp/NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_malaga_FirstExp_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1000.avgHV.evolution" with linespoints title "NSGA2-Multi-ADI"
+plot "results/FirstExp/NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_malaga_FirstExp_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1000.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb 'blue' title "NSGAII-DCN", "results/FirstExp/NSGA2_Multi_DBI/Centella_NSGA2_Multi_DBI_Sumo_malaga_FirstExp_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1000.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb "red" title "NSGAII-DBI", "results/FirstExp/NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_malaga_FirstExp_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1000.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb 'black' title "NSGAII-ADI"

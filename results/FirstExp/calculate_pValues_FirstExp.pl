@@ -2,8 +2,8 @@
 use warnings;
 use strict;
 
-my @init_A = qw {MonoGA NSGA2_DCN NSGA2_DBI NSGA2_ADI};
-my @init_B = qw {MonoGA NSGA2_DCN NSGA2_DBI NSGA2_ADI};
+my @init_A = qw {NSGA2_DCN NSGA2_DBI NSGA2_ADI};
+my @init_B = qw {NSGA2_DCN NSGA2_DBI NSGA2_ADI};
 my @problems = qw {berlin malaga paris stockholm};
 my %evals = (berlin => 10000, malaga => 1000, paris => 10000, stockholm => 10000);
 my %hash_numVar = (berlin => 611, paris => 448, stockholm => 445, malaga => 4761);
@@ -17,13 +17,11 @@ for my $problem (@problems) {
   for (my $i = 0; $i < @init_A; $i++) {
     for (my $j = $i + 1; $j < @init_B; $j++) {
 
-      my $file_A = "MonoGA/Centella_MonoGA_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_A[$i] eq "MonoGA");
-      $file_A = "NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_A[$i] eq "NSGA2_DCN");
+      my $file_A = "NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_A[$i] eq "NSGA2_DCN");
       $file_A = "NSGA2_Multi_DBI/Centella_NSGA2_Multi_DBI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_A[$i] eq "NSGA2_DBI");
       $file_A = "NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_A[$i] eq "NSGA2_ADI");
       
-      my $file_B = "MonoGA/Centella_MonoGA_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_B[$j] eq "MonoGA");
-      $file_B = "NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_B[$j] eq "NSGA2_DCN");
+      my $file_B = "NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_B[$j] eq "NSGA2_DCN");
       $file_B = "NSGA2_Multi_DBI/Centella_NSGA2_Multi_DBI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_B[$j] eq "NSGA2_DBI");
       $file_B = "NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_B[$j] eq "NSGA2_ADI");
       

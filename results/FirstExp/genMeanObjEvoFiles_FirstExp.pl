@@ -31,7 +31,7 @@ set ytics font "Helvetica,20"
 
 set output "images/FirstExp/meanObjEvo_FirstExp_${problem}.eps"
 
-plot "results/FirstExp/MonoGA/Centella_MonoGA_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints title "MonoGA", "results/FirstExp/NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints title "NSGA2-Multi-DCN", "results/FirstExp/NSGA2_Multi_DBI/Centella_NSGA2_Multi_DBI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints title "NSGA2-Multi-DBI", "results/FirstExp/NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints title "NSGA2-Multi-ADI"};
+plot "results/FirstExp/NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb 'blue' title "NSGAII-DCN", "results/FirstExp/NSGA2_Multi_DBI/Centella_NSGA2_Multi_DBI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb "red" title "NSGAII-DBI", "results/FirstExp/NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb 'black' title "NSGAII-ADI"};
 
   open FILE, "> meanObjEvo_FirstExp_${problem}.plot";
   print FILE $script;

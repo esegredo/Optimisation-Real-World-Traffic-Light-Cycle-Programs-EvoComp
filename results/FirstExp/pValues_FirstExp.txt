@@ -1,10 +1,10 @@
-berlin & 7.803e-01 & 7.824e-01 & 1.744e-02 & {\bf 7.797e-01} & {\bf 7.742e-01} & 1.960e-02 & 8.049e-01 & 8.021e-01 & 1.557e-02 & 8.360e-01 & 8.418e-01 & 2.090e-02 \\
-malaga & 9.466e-01 & 9.785e-01 & 1.256e-01 & 9.044e-01 & 9.269e-01 & 9.686e-02 & {\bf 8.902e-01} & {\bf 8.999e-01} & 1.189e-01 & 9.391e-01 & 9.648e-01 & 1.183e-01 \\
-paris & 6.601e-01 & {\bf 6.569e-01} & 1.061e-02 & {\bf 6.593e-01} & 6.587e-01 & 1.251e-02 & 6.718e-01 & 6.717e-01 & 8.296e-03 & 7.009e-01 & 7.011e-01 & 1.078e-02 \\
-stockholm & {\bf 6.560e-01} & {\bf 6.544e-01} & 1.267e-02 & 6.564e-01 & 6.544e-01 & 1.550e-02 & 6.730e-01 & 6.711e-01 & 1.301e-02 & 6.895e-01 & 6.895e-01 & 1.342e-02 \\
+berlin & {\bf 7.797e-01} & {\bf 7.742e-01} & 1.960e-02 & 8.049e-01 & 8.021e-01 & 1.557e-02 & 8.360e-01 & 8.418e-01 & 2.090e-02 \\
+malaga & 9.044e-01 & 9.269e-01 & 9.686e-02 & {\bf 8.902e-01} & {\bf 8.999e-01} & 1.189e-01 & 9.391e-01 & 9.648e-01 & 1.183e-01 \\
+paris & {\bf 6.593e-01} & {\bf 6.587e-01} & 1.251e-02 & 6.718e-01 & 6.717e-01 & 8.296e-03 & 7.009e-01 & 7.011e-01 & 1.078e-02 \\
+stockholm & {\bf 6.564e-01} & {\bf 6.544e-01} & 1.550e-02 & 6.730e-01 & 6.711e-01 & 1.301e-02 & 6.895e-01 & 6.895e-01 & 1.342e-02 \\
 
 
-berlin & 7.562e-01 & $\leftrightarrow$ & {\bf 3.303e-07} & $\uparrow$ & {\bf 3.744e-16} & $\uparrow$ & {\bf 2.583e-06} & $\uparrow$ & {\bf 7.733e-10} & $\uparrow$ & {\bf 1.723e-08} & $\uparrow$ \\
-malaga & 1.504e-01 & $\leftrightarrow$ & 7.932e-02 & $\leftrightarrow$ & 8.129e-01 & $\leftrightarrow$ & 6.139e-01 & $\leftrightarrow$ & 2.188e-01 & $\leftrightarrow$ & 1.157e-01 & $\leftrightarrow$ \\
-paris & 8.058e-01 & $\leftrightarrow$ & {\bf 1.333e-05} & $\uparrow$ & {\bf 2.680e-21} & $\uparrow$ & {\bf 3.492e-05} & $\uparrow$ & {\bf 6.224e-20} & $\uparrow$ & {\bf 6.668e-17} & $\uparrow$ \\
-stockholm & 9.249e-01 & $\leftrightarrow$ & {\bf 3.587e-06} & $\uparrow$ & {\bf 3.933e-14} & $\uparrow$ & {\bf 3.265e-05} & $\uparrow$ & {\bf 2.313e-12} & $\uparrow$ & {\bf 1.023e-05} & $\uparrow$ \\
+berlin & {\bf 2.583e-06} & $\uparrow$ & {\bf 7.733e-10} & $\uparrow$ & {\bf 1.723e-08} & $\uparrow$ \\
+malaga & 6.139e-01 & $\leftrightarrow$ & 2.188e-01 & $\leftrightarrow$ & 1.157e-01 & $\leftrightarrow$ \\
+paris & {\bf 3.492e-05} & $\uparrow$ & {\bf 6.224e-20} & $\uparrow$ & {\bf 6.668e-17} & $\uparrow$ \\
+stockholm & {\bf 3.265e-05} & $\uparrow$ & {\bf 2.313e-12} & $\uparrow$ & {\bf 1.023e-05} & $\uparrow$ \\
