@@ -10,7 +10,7 @@ set key top right
 
 set xlabel "Time (days)" font "Helvetica,22"
 set ylabel "Mean objective function value" font "Helvetica,22"
-set title  "City: Malaga - 30 runs - 20 days" font "Helvetica-Bold,22"
+set title  "City: Malaga - 20 days - 30 runs" font "Helvetica-Bold,22"
 set term postscript eps enhanced color solid "Helvetica,20"
 
 set xtics font "Helvetica,20"
@@ -21,4 +21,4 @@ set ytics font "Helvetica,20"
 
 set output "images/Teide/meanObjEvo_LongExec_malaga_20days.eps"
 
-plot "results/Teide/NSGA2_Multi_DCN/Teide_NSGA2_Multi_DCN_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1728000.avgHV.evolution" with linespoints lt -1 pi -4 pt 6 ps 1.5 lc rgb "black" title "NSGA2-DCN", "results/Teide/MonoGA/Teide_MonoGA_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1728000.avgHV.evolution" with linespoints lt -1 pi -4 pt 7 ps 1.5 lc rgb "black" title "MonoGA"
+plot "results/Teide/NSGA2_Multi_DCN/Teide_NSGA2_Multi_DCN_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1728000.avgHV.evolution" with linespoints lt -1 pi -4 pt 7 ps 1.5 lc rgb "blue" title "NSGAII-DCN", "results/Teide/MonoGA/Teide_MonoGA_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1728000.avgHV.evolution" with linespoints lt -1 pi -4 pt 7 ps 1.5 lc rgb "red" title "MonoGA"

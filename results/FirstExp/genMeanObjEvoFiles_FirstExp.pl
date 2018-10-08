@@ -22,7 +22,7 @@ set key top right
 
 set xlabel "Number of evaluations" font "Helvetica,22"
 set ylabel "Mean objective function value" font "Helvetica,22"
-set title  "City: ${problem} - $evals{$problem} evals. - 30 exec." font "Helvetica-Bold,22"
+set title  "City: ${problem} - $evals{$problem} evals. - 30 runs" font "Helvetica-Bold,22"
 set term postscript eps enhanced color solid "Helvetica,20"
 
 set xtics font "Helvetica,20"
@@ -31,7 +31,7 @@ set ytics font "Helvetica,20"
 
 set output "images/FirstExp/meanObjEvo_FirstExp_${problem}.eps"
 
-plot "results/FirstExp/NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb 'blue' title "NSGAII-DCN", "results/FirstExp/NSGA2_Multi_DBI/Centella_NSGA2_Multi_DBI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb "red" title "NSGAII-DBI", "results/FirstExp/NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pt 7 ps 1.5 lc rgb 'black' title "NSGAII-ADI"};
+plot "results/FirstExp/NSGA2_Multi_DCN/Centella_NSGA2_Multi_DCN_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pi -2 pt 7 ps 1.5 lc rgb 'blue' title "NSGAII-DCN", "results/FirstExp/NSGA2_Multi_DBI/Centella_NSGA2_Multi_DBI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pi -2 pt 7 ps 1.5 lc rgb "red" title "NSGAII-DBI", "results/FirstExp/NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}.avgHV.evolution" with linespoints lt -1 pi -2 pt 7 ps 1.5 lc rgb 'black' title "NSGAII-ADI"};
 
   open FILE, "> meanObjEvo_FirstExp_${problem}.plot";
   print FILE $script;

@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0 EPSF-2.0
 %%Title: images/Teide/meanObjEvo_LongExec_malaga_20days.eps
-%%Creator: gnuplot 5.0 patchlevel 5
-%%CreationDate: Thu Oct  5 17:24:48 2017
+%%Creator: gnuplot 5.2 patchlevel 2
+%%CreationDate: Mon Oct  8 17:26:27 2018
 %%DocumentFonts: (atend)
 %%BoundingBox: 50 50 410 302
 %%EndComments
@@ -429,15 +429,27 @@ Level1 {Level1PatternFill} {Level2PatternFill} ifelse
 dup length dict begin {1 index /FID eq {pop pop} {def} ifelse} forall
 currentdict end definefont pop
 %
+/Metrics {ExtendTextBox Gswidth} def
+/Lwidth {currentpoint stroke M 0 vshift R Metrics} def
+/Rwidth {currentpoint stroke M dup stringwidth pop neg vshift R Metrics} def
+/Cwidth {currentpoint stroke M dup stringwidth pop -2 div vshift R Metrics} def
+/GLwidth {currentpoint stroke M 0 vshift R {ExtendTextBox} forall} def
+/GRwidth {currentpoint stroke M dup Gwidth vshift R {ExtendTextBox} forall} def
+/GCwidth {currentpoint stroke M dup Gwidth 2 div vshift R {ExtendTextBox} forall} def
+/GLwidth2 {0 Gwidth AddGlyphWidth} def
+/GRwidth2 {Gwidth -1 mul 0 AddGlyphWidth} def
+/GCwidth2 {Gwidth 2 div dup -1 mul AddGlyphWidth} def
+/AddGlyphWidth { dup TBx2 gt {userdict /TBx2 3 -1 roll put} {pop} ifelse
+                 dup TBx1 lt {userdict /TBx1 3 -1 roll put} {pop} ifelse } def
 /MFshow {
    { dup 5 get 3 ge
      { 5 get 3 eq {gsave} {grestore} ifelse }
      {dup dup 0 get findfont exch 1 get scalefont setfont
      [ currentpoint ] exch dup 2 get 0 exch R dup 5 get 2 ne {dup dup 6
-     get exch 4 get {textshow} {stringwidth pop 0 R} ifelse }if dup 5 get 0 eq
+     get exch 4 get {textshow} {Metrics pop 0 R} ifelse }if dup 5 get 0 eq
      {dup 3 get {2 get neg 0 exch R pop} {pop aload pop M} ifelse} {dup 5
-     get 1 eq {dup 2 get exch dup 3 get exch 6 get stringwidth pop -2 div
-     dup 0 R} {dup 6 get stringwidth pop -2 div 0 R 6 get
+     get 1 eq {dup 2 get exch dup 3 get exch 6 get Gswidth pop -2 div
+     dup 0 R} {dup 6 get Gswidth pop -2 div 0 R 6 get
      textshow 2 index {aload pop M neg 3 -1 roll neg R pop pop} {pop pop pop
      pop aload pop M} ifelse }ifelse }ifelse }
      ifelse }
@@ -466,41 +478,39 @@ systemdict /pdfmark known not {
 SDict begin [
   /Title (images/Teide/meanObjEvo_LongExec_malaga_20days.eps)
   /Subject (gnuplot plot)
-  /Creator (gnuplot 5.0 patchlevel 5)
+  /Creator (gnuplot 5.2 patchlevel 2)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Thu Oct  5 17:24:48 2017)
+  /CreationDate (Mon Oct  8 17:26:27 2018)
   /DOCINFO pdfmark
 end
 } ifelse
 %
-% Support for boxed text - Ethan A Merritt May 2005
+% Support for boxed text - Ethan A Merritt Sep 2016
 %
 /InitTextBox { userdict /TBy2 3 -1 roll put userdict /TBx2 3 -1 roll put
            userdict /TBy1 3 -1 roll put userdict /TBx1 3 -1 roll put
 	   /Boxing true def } def
-/ExtendTextBox { Boxing
-    { gsave dup false charpath pathbbox
+/ExtendTextBox { dup type /stringtype eq
+    { Boxing { gsave dup false charpath pathbbox
       dup TBy2 gt {userdict /TBy2 3 -1 roll put} {pop} ifelse
       dup TBx2 gt {userdict /TBx2 3 -1 roll put} {pop} ifelse
       dup TBy1 lt {userdict /TBy1 3 -1 roll put} {pop} ifelse
       dup TBx1 lt {userdict /TBx1 3 -1 roll put} {pop} ifelse
-      grestore } if } def
+      grestore } if }
+    {} ifelse} def
 /PopTextBox { newpath TBx1 TBxmargin sub TBy1 TBymargin sub M
                TBx1 TBxmargin sub TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy1 TBymargin sub L closepath } def
 /DrawTextBox { PopTextBox stroke /Boxing false def} def
-/FillTextBox { gsave PopTextBox 1 1 1 setrgbcolor fill grestore /Boxing false def} def
+/FillTextBox { gsave PopTextBox fill grestore /Boxing false def} def
 0 0 0 0 InitTextBox
 /TBxmargin 20 def
 /TBymargin 20 def
 /Boxing false def
 /textshow { ExtendTextBox Gshow } def
 %
-% redundant definitions for compatibility with prologue.ps older than 5.0.2
-/LTB {BL [] LCb DL} def
-/LTb {PL [] LCb DL} def
 end
 %%EndProlog
 %%Page: 1 1
@@ -759,7 +769,7 @@ Z stroke
 LTb
 LCb setrgbcolor
 LCb setrgbcolor
-160 2609 M
+180 2609 M
 currentpoint gsave translate -270 rotate 0 0 moveto
 [ [(Helvetica) 220.0 0.0 true true 0 (Mean objective function value)]
 ] -73.3 MCshow
@@ -772,20 +782,20 @@ LCb setrgbcolor
 LTb
 LCb setrgbcolor
 3849 4739 M
-[ [(Helvetica-Bold) 220.0 0.0 true true 0 (City: Malaga - 30 runs - 20 days)]
+[ [(Helvetica-Bold) 220.0 0.0 true true 0 (City: Malaga - 20 days - 30 runs)]
 ] -73.3 MCshow
 % Begin plot #1
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C LCb setrgbcolor
+0.00 0.00 1.00 C LCb setrgbcolor
 5936 4256 M
-[ [(Helvetica) 200.0 0.0 true true 0 (NSGA2-DCN)]
+[ [(Helvetica) 200.0 0.0 true true 0 (NSGAII-DCN)]
 ] -66.7 MRshow
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6056 4256 M
+0.00 0.00 1.00 C 6056 4256 M
 543 0 V
 860 4255 M
 25 -198 V
@@ -890,7 +900,6 @@ LTb
 25 -5 V
 25 0 V
 25 0 V
-stroke 3412 1888 M
 25 0 V
 25 0 V
 25 -19 V
@@ -995,7 +1004,6 @@ stroke 3412 1888 M
 25 0 V
 25 -2 V
 25 -3 V
-stroke 6013 1585 M
 25 0 V
 25 0 V
 25 0 V
@@ -1036,440 +1044,440 @@ LCw setrgbcolor
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 860 4255 Circle
+0.00 0.00 1.00 C 860 4255 CircleF
 LCw setrgbcolor
 1.000 UP
 960 3639 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 960 3639 Circle
+0.00 0.00 1.00 C 960 3639 CircleF
 LCw setrgbcolor
 1.000 UP
 1060 3278 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1060 3278 Circle
+0.00 0.00 1.00 C 1060 3278 CircleF
 LCw setrgbcolor
 1.000 UP
 1160 2921 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1160 2921 Circle
+0.00 0.00 1.00 C 1160 2921 CircleF
 LCw setrgbcolor
 1.000 UP
 1260 2770 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1260 2770 Circle
+0.00 0.00 1.00 C 1260 2770 CircleF
 LCw setrgbcolor
 1.000 UP
 1360 2680 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1360 2680 Circle
+0.00 0.00 1.00 C 1360 2680 CircleF
 LCw setrgbcolor
 1.000 UP
 1460 2598 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1460 2598 Circle
+0.00 0.00 1.00 C 1460 2598 CircleF
 LCw setrgbcolor
 1.000 UP
 1560 2502 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1560 2502 Circle
+0.00 0.00 1.00 C 1560 2502 CircleF
 LCw setrgbcolor
 1.000 UP
 1661 2377 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1661 2377 Circle
+0.00 0.00 1.00 C 1661 2377 CircleF
 LCw setrgbcolor
 1.000 UP
 1761 2333 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1761 2333 Circle
+0.00 0.00 1.00 C 1761 2333 CircleF
 LCw setrgbcolor
 1.000 UP
 1861 2293 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1861 2293 Circle
+0.00 0.00 1.00 C 1861 2293 CircleF
 LCw setrgbcolor
 1.000 UP
 1961 2238 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1961 2238 Circle
+0.00 0.00 1.00 C 1961 2238 CircleF
 LCw setrgbcolor
 1.000 UP
 2061 2149 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2061 2149 Circle
+0.00 0.00 1.00 C 2061 2149 CircleF
 LCw setrgbcolor
 1.000 UP
 2161 2135 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2161 2135 Circle
+0.00 0.00 1.00 C 2161 2135 CircleF
 LCw setrgbcolor
 1.000 UP
 2261 2120 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2261 2120 Circle
+0.00 0.00 1.00 C 2261 2120 CircleF
 LCw setrgbcolor
 1.000 UP
 2361 2097 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2361 2097 Circle
+0.00 0.00 1.00 C 2361 2097 CircleF
 LCw setrgbcolor
 1.000 UP
 2461 2064 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2461 2064 Circle
+0.00 0.00 1.00 C 2461 2064 CircleF
 LCw setrgbcolor
 1.000 UP
 2561 2031 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2561 2031 Circle
+0.00 0.00 1.00 C 2561 2031 CircleF
 LCw setrgbcolor
 1.000 UP
 2661 2031 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2661 2031 Circle
+0.00 0.00 1.00 C 2661 2031 CircleF
 LCw setrgbcolor
 1.000 UP
 2761 2026 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2761 2026 Circle
+0.00 0.00 1.00 C 2761 2026 CircleF
 LCw setrgbcolor
 1.000 UP
 2861 1952 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2861 1952 Circle
+0.00 0.00 1.00 C 2861 1952 CircleF
 LCw setrgbcolor
 1.000 UP
 2961 1950 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2961 1950 Circle
+0.00 0.00 1.00 C 2961 1950 CircleF
 LCw setrgbcolor
 1.000 UP
 3061 1936 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3061 1936 Circle
+0.00 0.00 1.00 C 3061 1936 CircleF
 LCw setrgbcolor
 1.000 UP
 3162 1919 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3162 1919 Circle
+0.00 0.00 1.00 C 3162 1919 CircleF
 LCw setrgbcolor
 1.000 UP
 3262 1919 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3262 1919 Circle
+0.00 0.00 1.00 C 3262 1919 CircleF
 LCw setrgbcolor
 1.000 UP
 3362 1888 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3362 1888 Circle
+0.00 0.00 1.00 C 3362 1888 CircleF
 LCw setrgbcolor
 1.000 UP
 3462 1888 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3462 1888 Circle
+0.00 0.00 1.00 C 3462 1888 CircleF
 LCw setrgbcolor
 1.000 UP
 3562 1856 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3562 1856 Circle
+0.00 0.00 1.00 C 3562 1856 CircleF
 LCw setrgbcolor
 1.000 UP
 3662 1849 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3662 1849 Circle
+0.00 0.00 1.00 C 3662 1849 CircleF
 LCw setrgbcolor
 1.000 UP
 3762 1834 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3762 1834 Circle
+0.00 0.00 1.00 C 3762 1834 CircleF
 LCw setrgbcolor
 1.000 UP
 3862 1803 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3862 1803 Circle
+0.00 0.00 1.00 C 3862 1803 CircleF
 LCw setrgbcolor
 1.000 UP
 3962 1801 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3962 1801 Circle
+0.00 0.00 1.00 C 3962 1801 CircleF
 LCw setrgbcolor
 1.000 UP
 4062 1787 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4062 1787 Circle
+0.00 0.00 1.00 C 4062 1787 CircleF
 LCw setrgbcolor
 1.000 UP
 4162 1787 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4162 1787 Circle
+0.00 0.00 1.00 C 4162 1787 CircleF
 LCw setrgbcolor
 1.000 UP
 4262 1768 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4262 1768 Circle
+0.00 0.00 1.00 C 4262 1768 CircleF
 LCw setrgbcolor
 1.000 UP
 4362 1768 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4362 1768 Circle
+0.00 0.00 1.00 C 4362 1768 CircleF
 LCw setrgbcolor
 1.000 UP
 4462 1739 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4462 1739 Circle
+0.00 0.00 1.00 C 4462 1739 CircleF
 LCw setrgbcolor
 1.000 UP
 4562 1716 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4562 1716 Circle
+0.00 0.00 1.00 C 4562 1716 CircleF
 LCw setrgbcolor
 1.000 UP
 4663 1698 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4663 1698 Circle
+0.00 0.00 1.00 C 4663 1698 CircleF
 LCw setrgbcolor
 1.000 UP
 4763 1675 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4763 1675 Circle
+0.00 0.00 1.00 C 4763 1675 CircleF
 LCw setrgbcolor
 1.000 UP
 4863 1675 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4863 1675 Circle
+0.00 0.00 1.00 C 4863 1675 CircleF
 LCw setrgbcolor
 1.000 UP
 4963 1666 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4963 1666 Circle
+0.00 0.00 1.00 C 4963 1666 CircleF
 LCw setrgbcolor
 1.000 UP
 5063 1630 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5063 1630 Circle
+0.00 0.00 1.00 C 5063 1630 CircleF
 LCw setrgbcolor
 1.000 UP
 5163 1625 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5163 1625 Circle
+0.00 0.00 1.00 C 5163 1625 CircleF
 LCw setrgbcolor
 1.000 UP
 5263 1623 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5263 1623 Circle
+0.00 0.00 1.00 C 5263 1623 CircleF
 LCw setrgbcolor
 1.000 UP
 5363 1623 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5363 1623 Circle
+0.00 0.00 1.00 C 5363 1623 CircleF
 LCw setrgbcolor
 1.000 UP
 5463 1614 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5463 1614 Circle
+0.00 0.00 1.00 C 5463 1614 CircleF
 LCw setrgbcolor
 1.000 UP
 5563 1614 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5563 1614 Circle
+0.00 0.00 1.00 C 5563 1614 CircleF
 LCw setrgbcolor
 1.000 UP
 5663 1604 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5663 1604 Circle
+0.00 0.00 1.00 C 5663 1604 CircleF
 LCw setrgbcolor
 1.000 UP
 5763 1591 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5763 1591 Circle
+0.00 0.00 1.00 C 5763 1591 CircleF
 LCw setrgbcolor
 1.000 UP
 5863 1590 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5863 1590 Circle
+0.00 0.00 1.00 C 5863 1590 CircleF
 LCw setrgbcolor
 1.000 UP
 5963 1590 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5963 1590 Circle
+0.00 0.00 1.00 C 5963 1590 CircleF
 LCw setrgbcolor
 1.000 UP
 6063 1585 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6063 1585 Circle
+0.00 0.00 1.00 C 6063 1585 CircleF
 LCw setrgbcolor
 1.000 UP
 6164 1585 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6164 1585 Circle
+0.00 0.00 1.00 C 6164 1585 CircleF
 LCw setrgbcolor
 1.000 UP
 6264 1585 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6264 1585 Circle
+0.00 0.00 1.00 C 6264 1585 CircleF
 LCw setrgbcolor
 1.000 UP
 6364 1571 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6364 1571 Circle
+0.00 0.00 1.00 C 6364 1571 CircleF
 LCw setrgbcolor
 1.000 UP
 6464 1571 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6464 1571 Circle
+0.00 0.00 1.00 C 6464 1571 CircleF
 LCw setrgbcolor
 1.000 UP
 6564 1571 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6564 1571 Circle
+0.00 0.00 1.00 C 6564 1571 CircleF
 LCw setrgbcolor
 1.000 UP
 6664 1566 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6664 1566 Circle
+0.00 0.00 1.00 C 6664 1566 CircleF
 LCw setrgbcolor
 1.000 UP
 6764 1553 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6764 1553 Circle
+0.00 0.00 1.00 C 6764 1553 CircleF
 LCw setrgbcolor
 1.000 UP
 6327 4256 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6327 4256 Circle
+0.00 0.00 1.00 C 6327 4256 CircleF
 % End plot #1
 % Begin plot #2
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C LCb setrgbcolor
+1.00 0.00 0.00 C LCb setrgbcolor
 5936 4056 M
 [ [(Helvetica) 200.0 0.0 true true 0 (MonoGA)]
 ] -66.7 MRshow
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6056 4056 M
+1.00 0.00 0.00 C 6056 4056 M
 543 0 V
 860 4259 M
 25 -496 V
@@ -1574,7 +1582,6 @@ LTb
 25 -2 V
 25 -6 V
 25 -22 V
-stroke 3412 1100 M
 25 -11 V
 25 -2 V
 25 -5 V
@@ -1679,7 +1686,6 @@ stroke 3412 1100 M
 25 -1 V
 25 0 V
 25 0 V
-stroke 6013 960 M
 25 0 V
 25 0 V
 25 -1 V
@@ -1720,427 +1726,427 @@ LCw setrgbcolor
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 860 4259 CircleF
+1.00 0.00 0.00 C 860 4259 CircleF
 LCw setrgbcolor
 1.000 UP
 960 3612 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 960 3612 CircleF
+1.00 0.00 0.00 C 960 3612 CircleF
 LCw setrgbcolor
 1.000 UP
 1060 3054 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1060 3054 CircleF
+1.00 0.00 0.00 C 1060 3054 CircleF
 LCw setrgbcolor
 1.000 UP
 1160 2724 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1160 2724 CircleF
+1.00 0.00 0.00 C 1160 2724 CircleF
 LCw setrgbcolor
 1.000 UP
 1260 2512 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1260 2512 CircleF
+1.00 0.00 0.00 C 1260 2512 CircleF
 LCw setrgbcolor
 1.000 UP
 1360 2348 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1360 2348 CircleF
+1.00 0.00 0.00 C 1360 2348 CircleF
 LCw setrgbcolor
 1.000 UP
 1460 2234 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1460 2234 CircleF
+1.00 0.00 0.00 C 1460 2234 CircleF
 LCw setrgbcolor
 1.000 UP
 1560 2066 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1560 2066 CircleF
+1.00 0.00 0.00 C 1560 2066 CircleF
 LCw setrgbcolor
 1.000 UP
 1661 2047 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1661 2047 CircleF
+1.00 0.00 0.00 C 1661 2047 CircleF
 LCw setrgbcolor
 1.000 UP
 1761 1989 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1761 1989 CircleF
+1.00 0.00 0.00 C 1761 1989 CircleF
 LCw setrgbcolor
 1.000 UP
 1861 1919 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1861 1919 CircleF
+1.00 0.00 0.00 C 1861 1919 CircleF
 LCw setrgbcolor
 1.000 UP
 1961 1798 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 1961 1798 CircleF
+1.00 0.00 0.00 C 1961 1798 CircleF
 LCw setrgbcolor
 1.000 UP
 2061 1783 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2061 1783 CircleF
+1.00 0.00 0.00 C 2061 1783 CircleF
 LCw setrgbcolor
 1.000 UP
 2161 1773 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2161 1773 CircleF
+1.00 0.00 0.00 C 2161 1773 CircleF
 LCw setrgbcolor
 1.000 UP
 2261 1718 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2261 1718 CircleF
+1.00 0.00 0.00 C 2261 1718 CircleF
 LCw setrgbcolor
 1.000 UP
 2361 1658 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2361 1658 CircleF
+1.00 0.00 0.00 C 2361 1658 CircleF
 LCw setrgbcolor
 1.000 UP
 2461 1591 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2461 1591 CircleF
+1.00 0.00 0.00 C 2461 1591 CircleF
 LCw setrgbcolor
 1.000 UP
 2561 1475 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2561 1475 CircleF
+1.00 0.00 0.00 C 2561 1475 CircleF
 LCw setrgbcolor
 1.000 UP
 2661 1391 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2661 1391 CircleF
+1.00 0.00 0.00 C 2661 1391 CircleF
 LCw setrgbcolor
 1.000 UP
 2761 1378 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2761 1378 CircleF
+1.00 0.00 0.00 C 2761 1378 CircleF
 LCw setrgbcolor
 1.000 UP
 2861 1311 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2861 1311 CircleF
+1.00 0.00 0.00 C 2861 1311 CircleF
 LCw setrgbcolor
 1.000 UP
 2961 1292 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 2961 1292 CircleF
+1.00 0.00 0.00 C 2961 1292 CircleF
 LCw setrgbcolor
 1.000 UP
 3061 1201 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3061 1201 CircleF
+1.00 0.00 0.00 C 3061 1201 CircleF
 LCw setrgbcolor
 1.000 UP
 3162 1156 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3162 1156 CircleF
+1.00 0.00 0.00 C 3162 1156 CircleF
 LCw setrgbcolor
 1.000 UP
 3262 1141 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3262 1141 CircleF
+1.00 0.00 0.00 C 3262 1141 CircleF
 LCw setrgbcolor
 1.000 UP
 3362 1128 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3362 1128 CircleF
+1.00 0.00 0.00 C 3362 1128 CircleF
 LCw setrgbcolor
 1.000 UP
 3462 1087 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3462 1087 CircleF
+1.00 0.00 0.00 C 3462 1087 CircleF
 LCw setrgbcolor
 1.000 UP
 3562 1072 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3562 1072 CircleF
+1.00 0.00 0.00 C 3562 1072 CircleF
 LCw setrgbcolor
 1.000 UP
 3662 1057 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3662 1057 CircleF
+1.00 0.00 0.00 C 3662 1057 CircleF
 LCw setrgbcolor
 1.000 UP
 3762 1042 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3762 1042 CircleF
+1.00 0.00 0.00 C 3762 1042 CircleF
 LCw setrgbcolor
 1.000 UP
 3862 1037 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3862 1037 CircleF
+1.00 0.00 0.00 C 3862 1037 CircleF
 LCw setrgbcolor
 1.000 UP
 3962 1023 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 3962 1023 CircleF
+1.00 0.00 0.00 C 3962 1023 CircleF
 LCw setrgbcolor
 1.000 UP
 4062 1014 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4062 1014 CircleF
+1.00 0.00 0.00 C 4062 1014 CircleF
 LCw setrgbcolor
 1.000 UP
 4162 1010 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4162 1010 CircleF
+1.00 0.00 0.00 C 4162 1010 CircleF
 LCw setrgbcolor
 1.000 UP
 4262 1003 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4262 1003 CircleF
+1.00 0.00 0.00 C 4262 1003 CircleF
 LCw setrgbcolor
 1.000 UP
 4362 1000 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4362 1000 CircleF
+1.00 0.00 0.00 C 4362 1000 CircleF
 LCw setrgbcolor
 1.000 UP
 4462 991 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4462 991 CircleF
+1.00 0.00 0.00 C 4462 991 CircleF
 LCw setrgbcolor
 1.000 UP
 4562 989 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4562 989 CircleF
+1.00 0.00 0.00 C 4562 989 CircleF
 LCw setrgbcolor
 1.000 UP
 4663 988 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4663 988 CircleF
+1.00 0.00 0.00 C 4663 988 CircleF
 LCw setrgbcolor
 1.000 UP
 4763 981 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4763 981 CircleF
+1.00 0.00 0.00 C 4763 981 CircleF
 LCw setrgbcolor
 1.000 UP
 4863 979 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4863 979 CircleF
+1.00 0.00 0.00 C 4863 979 CircleF
 LCw setrgbcolor
 1.000 UP
 4963 976 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 4963 976 CircleF
+1.00 0.00 0.00 C 4963 976 CircleF
 LCw setrgbcolor
 1.000 UP
 5063 974 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5063 974 CircleF
+1.00 0.00 0.00 C 5063 974 CircleF
 LCw setrgbcolor
 1.000 UP
 5163 972 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5163 972 CircleF
+1.00 0.00 0.00 C 5163 972 CircleF
 LCw setrgbcolor
 1.000 UP
 5263 971 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5263 971 CircleF
+1.00 0.00 0.00 C 5263 971 CircleF
 LCw setrgbcolor
 1.000 UP
 5363 966 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5363 966 CircleF
+1.00 0.00 0.00 C 5363 966 CircleF
 LCw setrgbcolor
 1.000 UP
 5463 965 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5463 965 CircleF
+1.00 0.00 0.00 C 5463 965 CircleF
 LCw setrgbcolor
 1.000 UP
 5563 964 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5563 964 CircleF
+1.00 0.00 0.00 C 5563 964 CircleF
 LCw setrgbcolor
 1.000 UP
 5663 963 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5663 963 CircleF
+1.00 0.00 0.00 C 5663 963 CircleF
 LCw setrgbcolor
 1.000 UP
 5763 962 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5763 962 CircleF
+1.00 0.00 0.00 C 5763 962 CircleF
 LCw setrgbcolor
 1.000 UP
 5863 961 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5863 961 CircleF
+1.00 0.00 0.00 C 5863 961 CircleF
 LCw setrgbcolor
 1.000 UP
 5963 960 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 5963 960 CircleF
+1.00 0.00 0.00 C 5963 960 CircleF
 LCw setrgbcolor
 1.000 UP
 6063 960 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6063 960 CircleF
+1.00 0.00 0.00 C 6063 960 CircleF
 LCw setrgbcolor
 1.000 UP
 6164 959 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6164 959 CircleF
+1.00 0.00 0.00 C 6164 959 CircleF
 LCw setrgbcolor
 1.000 UP
 6264 958 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6264 958 CircleF
+1.00 0.00 0.00 C 6264 958 CircleF
 LCw setrgbcolor
 1.000 UP
 6364 956 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6364 956 CircleF
+1.00 0.00 0.00 C 6364 956 CircleF
 LCw setrgbcolor
 1.000 UP
 6464 956 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6464 956 CircleF
+1.00 0.00 0.00 C 6464 956 CircleF
 LCw setrgbcolor
 1.000 UP
 6564 954 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6564 954 CircleF
+1.00 0.00 0.00 C 6564 954 CircleF
 LCw setrgbcolor
 1.000 UP
 6664 953 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6664 953 CircleF
+1.00 0.00 0.00 C 6664 953 CircleF
 LCw setrgbcolor
 1.000 UP
 6764 953 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6764 953 CircleF
+1.00 0.00 0.00 C 6764 953 CircleF
 LCw setrgbcolor
 1.000 UP
 6327 4056 CircleF
 1.500 UP
 1.000 UL
 LTb
-0.00 0.00 0.00 C 6327 4056 CircleF
+1.00 0.00 0.00 C 6327 4056 CircleF
 % End plot #2
 2.000 UL
 LTb
