@@ -9,10 +9,9 @@ PROVIDED TOOL:
 1) sumo-wrapper: executes SUMO on a concrete instance using a provided TL configuration and gets statistical values about the execution
 2) genInstanceFile: builds the instance file used by sumo-wrapper and maybe your algorithm
 3) RS: random search
-4) DE: differential evolution
-5) PSO: particle swarm optimisation
-6) VNS: variable neighbourhood search
-4) getOriginalTL: obtains the original TL configuration from network file
+4) PSO: particle swarm optimisation
+5) VNS: variable neighbourhood search
+6) getOriginalTL: obtains the original TL configuration from network file
 
 INSTANCE FILE CONTENT:
 ----------------------

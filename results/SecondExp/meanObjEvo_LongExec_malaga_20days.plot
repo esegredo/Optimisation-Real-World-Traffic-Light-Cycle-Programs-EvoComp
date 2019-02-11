@@ -19,6 +19,6 @@ set xtics ("2 days" 172800, "4 days" 345600, "6 days" 518400, "8 days" 691200, "
 set xtics rotate
 set ytics font "Helvetica,20"
 
-set output "images/Teide/meanObjEvo_LongExec_malaga_20days.eps"
+set output "images/SecondExp/meanObjEvo_LongExec_malaga_20days.eps"
 
-plot "results/Teide/NSGA2_Multi_DCN/Teide_NSGA2_Multi_DCN_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1728000.avgHV.evolution" with linespoints lt -1 pi -4 pt 7 ps 1.5 lc rgb "blue" title "NSGAII-DCN", "results/Teide/MonoGA/Teide_MonoGA_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1728000.avgHV.evolution" with linespoints lt -1 pi -4 pt 7 ps 1.5 lc rgb "red" title "MonoGA"
+plot "results/SecondExp/NSGA2_Multi_DCN/Teide_NSGA2_Multi_DCN_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1728000.avgHV.evolution" with linespoints lt -1 pi -4 pt 7 ps 1.5 lc rgb "blue" title "NSGAII-DCN", "results/SecondExp/MonoGA/Teide_MonoGA_Sumo_malaga_LongExec_Mutate_Pol_Crossover_Uniform_100_0.000210039907582441_1_1728000.avgHV.evolution" with linespoints lt -1 pi -4 pt 7 ps 1.5 lc rgb "red" title "MonoGA"
