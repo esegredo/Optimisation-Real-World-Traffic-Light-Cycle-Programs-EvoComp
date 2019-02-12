@@ -170,6 +170,7 @@ if (@ARGV != 3){
 $repeticiones = shift;
 my $file1 = shift;
 my $file2 = shift;
+my $testName = "No-test";
 
 # Hacemos el test de shapiro para comprobar la normalidad de las poblaciones
 my $pvalueNormal1 = shapiroTest($file1);
@@ -178,13 +179,16 @@ my $pvalueNormal2 = shapiroTest($file2);
 if (($pvalueNormal1 >= 0.05) && ($pvalueNormal2 >= 0.05)){ #Si ambos cumplen el test de normalidad, se tiene que aplicar levene para analizar las varianzas
 	#Levene
 	my $pvalueLevene = leveneTest($file1, $file2);
-	if ($pvalueLevene >= 0.05){ #Varianzas iguales --> anova
+	if ($pvalueLevene >= 0.05) { #Varianzas iguales --> anova
 		$pValue = anovaTest($file1, $file2);
+    $testName = "ANOVA";
 	} else {#Varianzas diferentes --> Welch
 		$pValue = welchTest($file1, $file2);
+    $testName = "Welch";
 	}
 } else { #No sigue una distribucion normal -> kruskal wallis
 	$pValue = kruskalWallisTest($file1, $file2);
+  $testName = "Kruskal-Wallis";
 }
 
 $effSize = VarghaDelaneyTest($file1, $file2);
@@ -195,7 +199,7 @@ $median2 = getMedian($file2);
 $sd1 = getSD($file1);
 $sd2 = getSD($file2);
 
-printf("$mean1 $mean2 $median1 $median2 $sd1 $sd2 $pValue $effSize\n");
+printf("$mean1 $mean2 $median1 $median2 $sd1 $sd2 $pValue $testName $effSize\n");
 
 if ($pValue < 0.05){ #OJO SUPONEMOS MINIMIZACION
   if (($mean1 > $mean2) && ($median1 < $median2)){

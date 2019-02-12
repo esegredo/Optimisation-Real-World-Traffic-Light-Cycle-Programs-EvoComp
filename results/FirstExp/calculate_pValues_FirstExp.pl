@@ -26,7 +26,7 @@ for my $problem (@problems) {
       $file_B = "NSGA2_Multi_ADI/Centella_NSGA2_Multi_ADI_Sumo_${problem}_FirstExp_Mutate_Pol_Crossover_Uniform_100_${pm}_1_$evals{$problem}_$evals{$problem}.allHV" if ($init_B[$j] eq "NSGA2_ADI");
       
       my @result = `./statisticalTests_old.pl 30 $file_A $file_B`;
-      my ($mean1, $mean2, $median1, $median2, $sd1, $sd2, $pValue, $eSize) = split / /, $result[0];
+      my ($mean1, $mean2, $median1, $median2, $sd1, $sd2, $pValue, $testName, $eSize) = split /\s+/, $result[0];
 
       if (($i == 0) && ($j == 1)) {
         $stat->{$problem}{$init_A[$i]} = [$mean1, $median1, $sd1];
@@ -38,14 +38,14 @@ for my $problem (@problems) {
 
       if ($pValue < 0.05) {
         if (($mean1 < $mean2) && ($median1 < $median2)) {
-          $pValues->{$problem}{$init_A[$i]}{$init_B[$j]} = [$pValue, '$\uparrow$'];
+          $pValues->{$problem}{$init_A[$i]}{$init_B[$j]} = [$pValue, $testName, '$\uparrow$'];
         }
         elsif (($mean1 > $mean2) && ($median1 > $median2)) {
-          $pValues->{$problem}{$init_A[$i]}{$init_B[$j]} = [$pValue, '$\downarrow$'];
+          $pValues->{$problem}{$init_A[$i]}{$init_B[$j]} = [$pValue, $testName, '$\downarrow$'];
         }
       }
       else {
-        $pValues->{$problem}{$init_A[$i]}{$init_B[$j]} = [$pValue, '$\leftrightarrow$'];
+        $pValues->{$problem}{$init_A[$i]}{$init_B[$j]} = [$pValue, $testName, '$\leftrightarrow$'];
       }
     }
   }
@@ -98,11 +98,11 @@ for my $problem (@problems) {
     for (my $j = $i + 1; $j < @init_B; $j++) {
       my $initA = $init_A[$i];
       my $initB = $init_B[$j];
-      if ($pValues->{$problem}{$initA}{$initB}[1] ne '$\leftrightarrow$') {
-       $line .= sprintf(' & {\\bf %.3e} & %s', $pValues->{$problem}{$initA}{$initB}[0], $pValues->{$problem}{$initA}{$initB}[1]);
+      if ($pValues->{$problem}{$initA}{$initB}[2] ne '$\leftrightarrow$') {
+       $line .= sprintf(' & {\\bf %.3e} & %s & %s', $pValues->{$problem}{$initA}{$initB}[0], $pValues->{$problem}{$initA}{$initB}[2], $pValues->{$problem}{$initA}{$initB}[1]);
       }
       else {
-       $line .= sprintf(' & %.3e & %s', $pValues->{$problem}{$initA}{$initB}[0], $pValues->{$problem}{$initA}{$initB}[1]);
+       $line .= sprintf(' & %.3e & %s & %s', $pValues->{$problem}{$initA}{$initB}[0], $pValues->{$problem}{$initA}{$initB}[2], $pValues->{$problem}{$initA}{$initB}[1]);
       }
     }
   }

@@ -4,7 +4,7 @@ paris & {\bf 6.593e-01} & {\bf 6.587e-01} & 1.251e-02 & 6.718e-01 & 6.717e-01 & 
 stockholm & {\bf 6.564e-01} & {\bf 6.544e-01} & 1.550e-02 & 6.730e-01 & 6.711e-01 & 1.301e-02 & 6.895e-01 & 6.895e-01 & 1.342e-02 \\
 
 
-berlin & {\bf 2.583e-06} & $\uparrow$ & {\bf 7.733e-10} & $\uparrow$ & {\bf 1.723e-08} & $\uparrow$ \\
-malaga & 6.139e-01 & $\leftrightarrow$ & 2.188e-01 & $\leftrightarrow$ & 1.157e-01 & $\leftrightarrow$ \\
-paris & {\bf 3.492e-05} & $\uparrow$ & {\bf 6.224e-20} & $\uparrow$ & {\bf 6.668e-17} & $\uparrow$ \\
-stockholm & {\bf 3.265e-05} & $\uparrow$ & {\bf 2.313e-12} & $\uparrow$ & {\bf 1.023e-05} & $\uparrow$ \\
+berlin & {\bf 2.583e-06} & $\uparrow$ & Kruskal-Wallis & {\bf 7.733e-10} & $\uparrow$ & Kruskal-Wallis & {\bf 1.723e-08} & $\uparrow$ & ANOVA \\
+malaga & 6.139e-01 & $\leftrightarrow$ & ANOVA & 2.188e-01 & $\leftrightarrow$ & ANOVA & 1.157e-01 & $\leftrightarrow$ & ANOVA \\
+paris & {\bf 3.492e-05} & $\uparrow$ & Welch & {\bf 6.224e-20} & $\uparrow$ & ANOVA & {\bf 6.668e-17} & $\uparrow$ & ANOVA \\
+stockholm & {\bf 3.265e-05} & $\uparrow$ & ANOVA & {\bf 2.313e-12} & $\uparrow$ & ANOVA & {\bf 1.023e-05} & $\uparrow$ & ANOVA \\
