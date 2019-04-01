@@ -1,4 +1,4 @@
-# Improving the Optimisation of Real-world Traffic Light Cycle Programs through Evolutionary Computation
+# Optimising Real-world Traffic Cycle Programs by Using Evolutionary Computation
 
 **Eduardo Segredo** (esegredo@ull.edu.es | e.segredo@napier.ac.uk) </br>
 Departamento de Ingeniería Informática y de Sistemas, Universidad de La Laguna, Spain.
