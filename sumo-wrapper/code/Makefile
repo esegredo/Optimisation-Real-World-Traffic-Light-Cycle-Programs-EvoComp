@@ -1,4 +1,4 @@
-all: sumo-wrapper genInstanceFile RS getOriginalTL PSO DE VNS
+all: sumo-wrapper genInstanceFile RS getOriginalTL PSO VNS
 
 sumo-wrapper: sumo-wrapper.cpp cInstance.cpp simpleXMLParser.cpp
 	g++ -std=c++11 -o sumo-wrapper sumo-wrapper.cpp cInstance.cpp simpleXMLParser.cpp
@@ -15,11 +15,8 @@ getOriginalTL: getOriginalTL.cpp simpleXMLParser.cpp
 PSO: PSO.cpp cInstance.cpp simpleXMLParser.cpp
 	g++ -std=c++11 -o PSO PSO.cpp cInstance.cpp simpleXMLParser.cpp
 
-DE: DE.cpp cInstance.cpp simpleXMLParser.cpp
-	g++ -std=c++11 -o DE DE.cpp cInstance.cpp simpleXMLParser.cpp
-
 VNS: VNS.cpp cInstance.cpp simpleXMLParser.cpp
 	g++ -std=c++11 -o VNS VNS.cpp cInstance.cpp simpleXMLParser.cpp
 
 clean:
-	rm -f DE genInstanceFile getOriginalTL PSO RS sumo-wrapper VNS
+	rm -f genInstanceFile getOriginalTL PSO RS sumo-wrapper VNS
