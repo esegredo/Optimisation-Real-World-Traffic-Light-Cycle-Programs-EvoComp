@@ -36,7 +36,7 @@ Execute `./genInstance Y X T` where Y is the path, X is the instance name, and T
 1. Your algorithm should build a file with "totalPhases" number (maybe it should read the instance file)
 2. execute: `sumo-wrapper <instance_file> <dir> <traffic light configuration> <result file> <delete generated files [1|0]>`
    example: `sumo-wrapper instanceFiles/malaga.txt . mySolution.in myResult.out 0`
-3. Read <result file>
+3. Read `result file`
 
 # RESULT FILE CONTENT
 
@@ -69,4 +69,4 @@ float number       // noise (dB)
 3. Running RS (10 steps) on malaga instance
   1. `./RS instanceFiles/malaga.txt 10`
 4. Getting the original TL configuration of malaga instance
-  1. `./getOriginalTL instances/malaga/malaga.net.xml`
+  1. `./getOriginalTL instances/malaga/malaga`
