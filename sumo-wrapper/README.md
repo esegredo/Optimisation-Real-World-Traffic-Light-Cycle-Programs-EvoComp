@@ -33,10 +33,12 @@ Execute `./genInstance Y X T` where Y is the path, X is the instance name, and T
 
 # HOW TO INTEGRATE SUMO IN YOUR ALGORITHM
 
-1. Your algorithm should build a file with "totalPhases" number (maybe it should read the instance file)
-2. execute: `sumo-wrapper <instance_file> <dir> <traffic light configuration> <result file> <delete generated files [1|0]>`
+1. Your algorithm should read the instance file
+2. Your algorithm should write a file (`<traffic light configuration>`) with a solution of the problem consisting
+   of `totalPhases` integer numbers, which represents the duration of each of those phases.
+3. execute: `sumo-wrapper <instance_file> <dir> <traffic light configuration> <result file> <delete generated files [1|0]>`
    example: `sumo-wrapper instanceFiles/malaga.txt . mySolution.in myResult.out 0`
-3. Read `result file`
+4. Your algorithm should read the `<result file>` in order to get the fitness of the solution evaluated through SUMO
 
 # RESULT FILE CONTENT
 
