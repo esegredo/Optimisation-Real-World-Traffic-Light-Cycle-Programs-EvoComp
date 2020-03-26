@@ -1,0 +1,17 @@
+anchieta
+instances/anchieta/
+11
+46
+278958815 6 GGrrrrGGg yyrrrryyg rrGrrrrrG rryrrrrry rrrGGGGrr rrryyyyrr 
+Entrada-Astrofisico 4 GrG yrG rGG ryG 
+Entrada-TF5Norte 4 GGrrr yyrrr rrGGG rryyr 
+Entrada-TF5Sur 4 GGrrG yyrrr rrggr rryyr 
+Entrada-Trinidad 4 GGGrrr yyyrrr rrrGGG rrryyr 
+EntradaSalida-Geneto 4 GGrGr yyrGr rrGGG rryGy 
+EntradaSalida-TF24 4 GGrGr yyrGr rrGGG rryGy 
+Salida-AngelGuimera 4 GGGr yGGr rGGG rGGy 
+Salida-TF5Norte 4 GGGr yGGr rGGG rGGy 
+Salida-TF5Sur 4 GGGr yGGr rGGG rGGy 
+Salida-Trinidad 4 gGGgr yGGgr rGGGG rGGGy 
+646
+3600

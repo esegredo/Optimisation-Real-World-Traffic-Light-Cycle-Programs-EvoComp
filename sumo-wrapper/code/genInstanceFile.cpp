@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 	int pos;
 	map<string, string> m;
 
-	if(argc < 3)
+	if(argc < 4)
 	{
 		cout << "Usage: " << argv[0] << " <path> <instance name> <simulation time>" << endl;
 		exit(-1);
@@ -65,8 +65,7 @@ int main(int argc, char **argv)
 		{
 			// get map
 			getPairMap(line, m);
-
-			gPhase += " " +m["state"]; 
+			gPhase += " " + m["state"];
 			nPhase++; 
 			nPhaseTL++;
 		}

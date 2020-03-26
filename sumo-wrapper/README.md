@@ -37,7 +37,7 @@ Execute `./genInstance Y X T` where Y is the path, X is the instance name, and T
 2. Your algorithm should write a file (`<traffic light configuration>`) with a solution of the problem consisting
    of `totalPhases` integer numbers, which represents the duration of each of those phases.
 3. execute: `sumo-wrapper <instance_file> <dir> <traffic light configuration> <result file> <delete generated files [1|0]>`
-   example: `sumo-wrapper instanceFiles/malaga.txt . mySolution.in myResult.out 0`
+   example: `sumo-wrapper instanceFiles/anchieta.txt . mySolution.in myResult.out 0`
 4. Your algorithm should read the `<result file>` in order to get the fitness of the solution evaluated through SUMO
 
 # RESULT FILE CONTENT
@@ -62,13 +62,13 @@ float number       // noise (dB)
 
 # EXAMPLES
 
-1. Generating malaga instance File (requires `instances/malaga/malaga.net.xml` and `instances/malaga/malaga.rou.xml`):
-  1. `./genInstanceFile instances/malaga/ malaga 2200`
-  2. `mv malaga.txt instanceFiles/`
-2. Running SUMO using an existing TL configuration (`tl.txt`) on malaga instance
-  1. `./sumo-wrapper instanceFiles/malaga.txt tl.txt result.txt`
+1. Generating anchieta instance File (requires `instances/anchieta/anchieta.net.xml` and `instances/anchieta/anchieta.rou.xml`):
+  1. `code/genInstanceFile instances/anchieta/ anchieta 2200`
+  2. `mv anchieta.txt instanceFiles/`
+2. Running SUMO using an existing TL configuration (`tl.txt`) on anchieta instance
+  1. `code/sumo-wrapper instanceFiles/anchieta.txt . tl.txt result.txt` 0
   2. `cat result.txt`
-3. Running RS (10 steps) on malaga instance
-  1. `./RS instanceFiles/malaga.txt 10`
-4. Getting the original TL configuration of malaga instance
-  1. `./getOriginalTL instances/malaga/malaga`
+3. Running RS (10 steps) on anchieta instance
+  1. `code/RS instanceFiles/anchieta.txt 10`
+4. Getting the original TL configuration of anchieta instance
+  1. `code/getOriginalTL instances/anchieta/anchieta`
