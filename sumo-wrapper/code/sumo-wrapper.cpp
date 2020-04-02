@@ -15,23 +15,24 @@ using namespace std;
 
 typedef struct
 {
-	double 		GvR; 		// Original Green vs Red
-	double 		nGvR; 		// Normalized GvR
-	double 		duration;	// Total duration
-	unsigned 	numVeh; 	// Vehicles arriving
-	unsigned 	remVeh; 	// Vehicles not arriving
-	double		stops;		// Number of stops
-	double		fitness;	// Fitness
+	double 		GvR; 					// Original Green vs Red
+	double 		nGvR; 				// Normalized GvR
+	double 		duration;			// Total duration
+	unsigned 	numVeh;		 		// Vehicles arriving
+	unsigned 	remVeh; 			// Vehicles not arriving
+	double		stops;				// Number of stops (waiting counts and not planned stops)
+	double		waitingTime;	// Total time that vehicles have been waiting (at a speed lower than 0.1 m/s)
+	double		fitness;			// Fitness
 	// New stats
-	double		meanTravelTime; // Mean Travel Time
-	double		meanWaitingTime; // Mean Waiting Time
-	long double	CO2;		// CO2 
-	long double	CO;			// CO
-	long double	HC; 		// HC
-	long double	NOx;		// NOx
-	long double	PMx;		// PMx
-	long double	fuel;		// fuel
-	long double	noise;		// noise
+	double		meanTravelTime;		// Mean Travel Time
+	double		meanWaitingTime;	// Mean Waiting Time
+	long double	CO2;						// CO2 
+	long double	CO;							// CO
+	long double	HC;					 		// HC
+	long double	NOx;						// NOx
+	long double	PMx;						// PMx
+	long double	fuel;						// fuel
+	long double	noise;					// noise
 } tStatistics;
 
 // Auxiliar functions
@@ -65,10 +66,13 @@ void calculateGvR(const cInstance &c, const vector<unsigned> & tl_times, tStatis
 
 // Analyze trip info obtaining how many vehicle arriving, number of stops, total duration, ...
 void analyzeTripInfo(const cInstance &c, unsigned long long t, tStatistics &s, string dir);
+
 // Analyze Summary File
 void analyzeSummary(const cInstance &c, unsigned long long t, tStatistics &s, string dir);
+
 // Calculate Fitness
 double calculateFitness(const tStatistics &s, unsigned simTime);
+
 // Analyze emission file
 void analyzeEmissions(const cInstance &c, unsigned long long t, tStatistics &s, string dir);
 
@@ -78,7 +82,7 @@ int main(int argc, char **argv)
 	tStatistics s;
 	vector<unsigned> tl_times;
 
-//	time_t current_time = time(0), t2, t3, t4;
+	//time_t current_time = time(0), t2, t3, t4;
   auto start = chrono::high_resolution_clock::now();
   auto current_time = chrono::duration_cast<chrono::nanoseconds>(start.time_since_epoch()).count();
 
@@ -110,7 +114,7 @@ int main(int argc, char **argv)
 	calculateGvR(instance, tl_times, s);
 	analyzeTripInfo(instance, current_time, s, argv[2]);
 	analyzeSummary(instance, current_time, s, argv[2]);
-//	analyzeEmissions(*instance, current_time, s); 
+	//analyzeEmissions(*instance, current_time, s); 
 	s.fitness = calculateFitness(s, instance.getSimulationTime());
 
 	writeResults(s, argv[4]);
@@ -145,7 +149,7 @@ void buildXMLfile(const cInstance &c, const vector<unsigned> &tl_times, unsigned
 	unsigned nPhases;
 	unsigned tl_times_counter = 0;
 
-	fout_xml << "<add>" << endl;
+	fout_xml << "<additional>" << endl;
 
 	for (int i=0;i<nTL;i++)
 	{
@@ -162,7 +166,7 @@ void buildXMLfile(const cInstance &c, const vector<unsigned> &tl_times, unsigned
 		}
 		fout_xml << "\t</tlLogic>" << endl;
 	}
-	fout_xml << "</add>" << endl;
+	fout_xml << "</additional>" << endl;
 
 	fout_xml.close();
 }
@@ -303,6 +307,7 @@ void analyzeTripInfo(const cInstance &c, unsigned long long t, tStatistics &s, s
 	s.numVeh = 0;
 	s.duration = 0;
 	s.stops = 0;
+	s.waitingTime = 0;
 	s.CO2 = 0;
 	s.CO = 0;
 	s.HC = 0;
@@ -321,7 +326,12 @@ void analyzeTripInfo(const cInstance &c, unsigned long long t, tStatistics &s, s
 	
 			s.numVeh++;
 			s.duration += atof(m["duration"].c_str()); 
-			s.stops += atof(m["waitSteps"].c_str()); 
+      // It is the number of times vehicles have been waiting (at a speed lower than 0.1 m/s)
+      // It does not include the number of planned stops
+			s.stops += atof(m["waitingCount"].c_str());
+      // It is the times a vehicle has been waiting (at a speed lower than 0.1 m/s)
+      // It does not include the planned stops time
+			s.waitingTime += atof(m["waitingTime"].c_str());
 		}
 		else if(isSubString(line,"CO_abs=",position))
 		{
@@ -333,7 +343,7 @@ void analyzeTripInfo(const cInstance &c, unsigned long long t, tStatistics &s, s
 			s.NOx += atof(m["NOx_abs"].c_str());
 			s.PMx += atof(m["PMx_abs"].c_str());
 			s.fuel += atof(m["fuel_abs"].c_str());
-//			s.noise += atof(m["noise"].c_str());
+			//s.noise += atof(m["noise"].c_str());
 		}
 
 		getline(fin, line);
@@ -374,7 +384,7 @@ void analyzeSummary(const cInstance &c, unsigned long long t, tStatistics &s, st
 
 double calculateFitness(const tStatistics &s, unsigned simTime)
 {
-	return (s.duration + (s.remVeh*simTime) + s.stops )/(s.numVeh*s.numVeh + s.GvR);
+	return (s.duration + (s.remVeh * simTime) + s.waitingTime) / (s.numVeh * s.numVeh + s.GvR);
 }
 
 void analyzeEmissions(const cInstance &c, unsigned long long t, tStatistics &s, string dir)
@@ -425,7 +435,8 @@ void writeResults(const tStatistics &s, string filename)
 	fout << s.duration << " // Total duration" << endl;
 	fout << s.numVeh << " // Vehicles arriving" << endl;
 	fout << s.remVeh << " // Vehicles not arriving" << endl;
-	fout << s.stops << " // Number of stops" << endl;
+	fout << s.stops << " // Number of stops (waiting counts)" << endl;
+	fout << s.waitingTime << " // Total waiting time (at a speed lower than 0.1 m/s)" << endl;
 	fout << s.fitness << " // Fitness" << endl;
 	fout << s.meanTravelTime << " // Mean Travel Time" << endl;	
 	fout << s.meanWaitingTime << " // Mean Waiting Time" << endl;
