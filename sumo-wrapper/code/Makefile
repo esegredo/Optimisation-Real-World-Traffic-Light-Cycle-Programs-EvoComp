@@ -4,7 +4,7 @@ sumo-wrapper: sumo-wrapper.cpp cInstance.cpp simpleXMLParser.cpp
 	g++ -std=c++11 -o sumo-wrapper sumo-wrapper.cpp cInstance.cpp simpleXMLParser.cpp
 
 par-sumo-wrapper: par-sumo-wrapper.cpp cInstance.cpp simpleXMLParser.cpp
-	g++ -std=c++11 -o par-sumo-wrapper par-sumo-wrapper.cpp cInstance.cpp simpleXMLParser.cpp
+	g++ -std=c++11 -fopenmp -o par-sumo-wrapper par-sumo-wrapper.cpp cInstance.cpp simpleXMLParser.cpp
 
 genInstanceFile: genInstanceFile.cpp simpleXMLParser.cpp
 	g++ -std=c++11 -o genInstanceFile genInstanceFile.cpp simpleXMLParser.cpp

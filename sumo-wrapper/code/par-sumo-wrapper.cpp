@@ -51,7 +51,7 @@ void deleteFiles(const cInstance &c, unsigned long long t, string dir);
 void readTLtime(string tl_filename, vector<unsigned> &tl);
 
 // Build command for executing SUMO
-string buildCommand(const cInstance &c, unsigned long long t, string dir, unsigned int numRep);
+string buildCommand(const cInstance &c, unsigned long long t, string dir, unsigned int numRep, vector<int> seeds);
 
 // Write the result file 
 void writeResults(const tStatistics &s, string filename, unsigned int numRep);
@@ -89,19 +89,24 @@ int main(int argc, char **argv)
 		exit(-1);
 	}
 
-	tStatistics s;
 	cInstance instance;
 	instance.read(argv[1]);
   
 	vector<unsigned> tl_times;
 	readTLtime(argv[3], tl_times);
+  
+  srand(time(NULL));
+  vector<int> seeds;
+  for (int i = 0; i < atoi(argv[6]); i++) {
+    seeds.push_back(rand());
+  }
 
 	buildXMLfile(instance, tl_times, current_time, argv[2]);
- 	calculateGvR(instance, tl_times, s);
 
   // The parallelisation should start herein
+  #pragma omp parallel for
   for (int i = 0; i < atoi(argv[6]); i++) {
-  	string cmd = buildCommand(instance, current_time, argv[2], i);
+  	string cmd = buildCommand(instance, current_time, argv[2], i, seeds);
 
   	cout << "Executing sumo ..." << endl;
 
@@ -113,6 +118,8 @@ int main(int argc, char **argv)
   	cout << "Obtaining statistics ..." << endl;
 
   	// Obtaining statistics
+	  tStatistics s;
+ 	  calculateGvR(instance, tl_times, s);
   	analyzeTripInfo(instance, current_time, s, argv[2], i);
   	analyzeSummary(instance, current_time, s, argv[2], i);
     //analyzeEmissions(*instance, current_time, s, i); 
@@ -206,7 +213,7 @@ void readTLtime(string tl_filename, vector<unsigned> &tl)
 	fin_tl.close();	
 }
 
-string buildCommand(const cInstance &c, unsigned long long t, string dir, unsigned int numRep)
+string buildCommand(const cInstance &c, unsigned long long t, string dir, unsigned int numRep, vector<int> seeds)
 {
 	//string cmd = "sumo ";
 	string cmd = "sumo -W "; 
@@ -236,7 +243,9 @@ string buildCommand(const cInstance &c, unsigned long long t, string dir, unsign
   cmd += "--device.emissions.probability 1.0 ";
   //cmd += "--seed " + to_string(t); // random seed
 	//cmd += "--seed 23432 ";
-	cmd += "--random true ";
+	//cmd += "--random true ";
+	//cmd += "--thread-rngs 8 ";
+	cmd += "--seed " + to_string(seeds[numRep]) + " ";
 
   // THIS IS NEW!!!! No validation
   cmd += "--xml-validation never";
