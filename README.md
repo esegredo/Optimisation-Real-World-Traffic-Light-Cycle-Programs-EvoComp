@@ -1,6 +1,6 @@
 # Optimising Real-world Traffic Cycle Programs by Using Evolutionary Computation
 
-**Eduardo Segredo** (esegredo@ull.edu.es | e.segredo@napier.ac.uk) </br>
+**Eduardo Segredo** (esegredo@ull.edu.es) </br>
 Departamento de Ingeniería Informática y de Sistemas, Universidad de La Laguna, Spain.
 School of Computing, Edinburgh Napier University, United Kingdom.
 
