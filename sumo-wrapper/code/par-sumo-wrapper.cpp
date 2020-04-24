@@ -472,7 +472,7 @@ string execCommandPipe(string command) {
 
   // Waits until the execution ends
   if (wait(NULL) == -1){
-    cerr << "Error waiting for simulator results" << endl;
+    //cerr << "Error waiting for simulator results" << endl;
     return "Error waiting for simulator results";
   }
 
